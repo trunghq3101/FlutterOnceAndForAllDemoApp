@@ -1,0 +1,7 @@
+{
+  "window.zoomLevel": 6,
+  "editor.fontSize": 16,
+  "editor.minimap.enabled": true,
+  "gitlens.codeLens.enabled": false,
+  "dart.showMainCodeLens": false
+}
