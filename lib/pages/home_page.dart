@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_community/main.dart';
+import 'package:flutter_community/models/issue.dart';
 
 import 'create_issue_page.dart';
 
@@ -12,8 +14,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var issues = <String>[];
-
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
           child: SizedBox.expand(),
         ),
         ListView(
-          children: issues.map((e) => Text(e)).toList(),
+          children: issuesModel.issues.map((e) => IssueItem(issue: e)).toList(),
         ),
         Align(
           alignment: Alignment.bottomRight,
@@ -33,12 +33,14 @@ class _HomePageState extends State<HomePage> {
               child: Builder(builder: (context) {
                 return FloatingActionButton.extended(
                   onPressed: () async {
-                    final newIssue = await Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => CreateIssuePage()),
+                    await Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => CreateIssuePage(
+                          issuesModel: issuesModel,
+                        ),
+                      ),
                     );
-                    setState(() {
-                      issues.add(newIssue);
-                    });
+                    setState(() {});
                   },
                   label: Text('Create'.toUpperCase()),
                   icon: Icon(Icons.add),
@@ -51,5 +53,19 @@ class _HomePageState extends State<HomePage> {
         ),
       ],
     );
+  }
+}
+
+class IssueItem extends StatelessWidget {
+  const IssueItem({
+    Key? key,
+    required this.issue,
+  }) : super(key: key);
+
+  final IssueModel issue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(issue.title);
   }
 }

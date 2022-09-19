@@ -1,9 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_community/models/issue.dart';
 
-var title = '';
+class CreateIssuePage extends StatefulWidget {
+  const CreateIssuePage({
+    Key? key,
+    required this.issuesModel,
+  }) : super(key: key);
 
-class CreateIssuePage extends StatelessWidget {
-  const CreateIssuePage({Key? key}) : super(key: key);
+  final IssuesModel issuesModel;
+
+  @override
+  State<CreateIssuePage> createState() => _CreateIssuePageState();
+}
+
+class _CreateIssuePageState extends State<CreateIssuePage> {
+  late IssueModel _newIssue;
+
+  @override
+  void initState() {
+    super.initState();
+    _newIssue = widget.issuesModel.newBlankIssue();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,17 +32,19 @@ class CreateIssuePage extends StatelessWidget {
         children: [
           Expanded(
             child: TextField(
+              key: Key('title'),
               decoration: InputDecoration(
                 labelText: 'Title',
               ),
               onChanged: ((value) {
-                title = value;
+                _newIssue.title = value;
               }),
             ),
           ),
           ElevatedButton(
             onPressed: () {
-              Navigator.of(context).pop(title);
+              widget.issuesModel.submit(issue: _newIssue);
+              Navigator.of(context).pop();
             },
             child: Text('Submit'.toUpperCase()),
           ),
