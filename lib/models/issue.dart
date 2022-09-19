@@ -1,11 +1,5 @@
 class IssueModel {
-  String _title = '';
-
-  String get title => _title;
-
-  set title(String title) {
-    _title = title;
-  }
+  String title = '';
 }
 
 class IssuesModel {
