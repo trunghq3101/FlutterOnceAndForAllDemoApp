@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        ColoredBox(
+        const ColoredBox(
           color: Colors.white,
           child: SizedBox.expand(),
         ),
@@ -43,8 +43,8 @@ class _HomePageState extends State<HomePage> {
                     setState(() {});
                   },
                   label: Text('Create'.toUpperCase()),
-                  icon: Icon(Icons.add),
-                  backgroundColor: Color(0xFF03DAC5),
+                  icon: const Icon(Icons.add),
+                  backgroundColor: const Color(0xFF03DAC5),
                   foregroundColor: Colors.black,
                 );
               }),

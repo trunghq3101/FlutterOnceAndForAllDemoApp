@@ -9,7 +9,7 @@ void main() {
     testWidgets('Verify integration with IssuesModel',
         (WidgetTester tester) async {
       issuesModel.issues = [];
-      await tester.pumpWidget(MaterialApp(
+      await tester.pumpWidget(const MaterialApp(
         home: HomePage(),
       ));
       expect(find.byType(IssueItem), findsNothing);
@@ -17,7 +17,7 @@ void main() {
         IssueModel()..title = 'My first issue',
         IssueModel()..title = 'My second issue'
       ];
-      await tester.pumpWidget(MaterialApp(
+      await tester.pumpWidget(const MaterialApp(
         home: HomePage(),
       ));
       expect(find.byType(IssueItem), findsNWidgets(2));

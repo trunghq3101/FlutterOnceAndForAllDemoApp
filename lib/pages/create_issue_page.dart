@@ -26,14 +26,14 @@ class _CreateIssuePageState extends State<CreateIssuePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Create new issue'),
+        title: const Text('Create new issue'),
       ),
       body: Column(
         children: [
           Expanded(
             child: TextField(
-              key: Key('title'),
-              decoration: InputDecoration(
+              key: const Key('title'),
+              decoration: const InputDecoration(
                 labelText: 'Title',
               ),
               onChanged: ((value) {
@@ -48,7 +48,7 @@ class _CreateIssuePageState extends State<CreateIssuePage> {
             },
             child: Text('Submit'.toUpperCase()),
           ),
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
         ],
       ),
     );

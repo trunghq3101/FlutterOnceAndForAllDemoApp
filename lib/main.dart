@@ -7,7 +7,7 @@ var issuesModel = IssuesModel();
 
 main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: HomePage(),
     ),
   );

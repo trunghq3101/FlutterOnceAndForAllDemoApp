@@ -33,7 +33,7 @@ void main() {
         home: CreateIssuePage(issuesModel: mockIssuesModel),
       ));
       expect(mockIssuesModel.newBlankIssueCalled, 1);
-      await tester.enterText(find.byKey(Key('title')), 'My first issue');
+      await tester.enterText(find.byKey(const Key('title')), 'My first issue');
       expect(newIssue.title, 'My first issue');
       await tester.tap(find.text('SUBMIT'));
       expect(mockIssuesModel.submitCalled, 1);
